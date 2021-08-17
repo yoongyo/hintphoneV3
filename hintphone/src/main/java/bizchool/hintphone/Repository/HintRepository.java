@@ -1,28 +1,24 @@
 package bizchool.hintphone.Repository;
 
 
-import bizchool.hintphone.domain.Theme;
+import bizchool.hintphone.domain.Hint;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class ThemeRepository {
-
+public class HintRepository {
     private final EntityManager em;
 
-    public void save(Theme theme) {
-        em.persist(theme);
+    public void save(Hint hint) {
+        em.persist(hint);
     }
 
-    public Theme findById(Long id) {
-        return em.createQuery("select t from Theme t where t.id = :id", Theme.class)
+    public Hint findById(Long id) {
+        return em.createQuery("select h from Hint h where h.id = :id", Hint.class)
                 .setParameter("id", id)
                 .getSingleResult();
     }
-
-
 }
